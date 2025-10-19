@@ -131,5 +131,3 @@ Julia Bardmesser’s critique exposes the “use-case illusion”: mistaking act
 > **D⁴ defines *how* to make it executable.**
 
 ---
-
-Would you like me to expand this into a **3-slide executive summary deck** (for CDOs or deans) showing how D⁴ converts “data chaos into strategic capability”?
