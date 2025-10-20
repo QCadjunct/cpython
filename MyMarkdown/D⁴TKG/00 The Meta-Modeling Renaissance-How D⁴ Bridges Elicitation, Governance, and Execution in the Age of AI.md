@@ -194,6 +194,7 @@ This triad forms a **living governance ecosystem** — continuous synchronizatio
 ### **Figure 2 — D⁴TKG Relationships Across Target Engines (Horizontal Reuse)**
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#e3f2fd','primaryTextColor':'#0d47a1','primaryBorderColor':'#1976d2','lineColor':'#42a5f5','secondaryColor':'#fff3e0','tertiaryColor':'#f3e5f5','fontSize':'16px'}}}%%
 flowchart LR
     subgraph TAXO ["🔷 Domain Taxonomy & Semantics"]
         A1["BGD: Common.EmailAddress (Meaning)"]
@@ -206,10 +207,11 @@ flowchart LR
     end
 
     subgraph TARGETS ["🧱 Database Targets (Horizontal Scaling & Reuse)"]
-        B1["PostgreSQL: 'Common.EmailAddress' DOMAIN varchar(255) CHECK(regex)"]
-        B2["SQL Server: '[Common].[EmailAddress]' UDT NVARCHAR(255) + CHECK"]
-        B3["Oracle: 'Common.EmailAddress' VARCHAR2(255) + CHECK/TRIGGER"]
-        B4["DuckDB: 'Common.EmailAddress' VARCHAR + CHECK(REGEXP) (Emulated)"]
+        direction TB
+        B1["🐘 PostgreSQL: 'Common.EmailAddress' DOMAIN varchar(255) CHECK(regex)"]
+        B2["🔷 SQL Server: '[Common].[EmailAddress]' UDT NVARCHAR(255) + CHECK"]
+        B3["🔴 Oracle: 'Common.EmailAddress' VARCHAR2(255) + CHECK/TRIGGER"]
+        B4["🦆 DuckDB: 'Common.EmailAddress' VARCHAR + CHECK(REGEXP) (Emulated)"]
     end
 
     A1 --> A2
@@ -228,6 +230,14 @@ flowchart LR
     B2 -.-> M2
     B3 -.-> M1
     B4 -.-> M2
+
+    classDef taxonomyClass fill:#e3f2fd,stroke:#1976d2,stroke-width:3px,color:#0d47a1
+    classDef mapClass fill:#fff3e0,stroke:#f57c00,stroke-width:3px,color:#e65100
+    classDef targetClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px,color:#4a148c
+    
+    class A1,A2 taxonomyClass
+    class M1,M2 mapClass
+    class B1,B2,B3,B4 targetClass
 
 ```
 
