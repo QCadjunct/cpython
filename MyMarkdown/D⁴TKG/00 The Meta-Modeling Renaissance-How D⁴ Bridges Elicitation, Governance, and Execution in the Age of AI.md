@@ -194,50 +194,32 @@ This triad forms a **living governance ecosystem** — continuous synchronizatio
 ### **Figure 2 — D⁴TKG Relationships Across Target Engines (Horizontal Reuse)**
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#e3f2fd','primaryTextColor':'#0d47a1','primaryBorderColor':'#1976d2','lineColor':'#42a5f5','secondaryColor':'#fff3e0','tertiaryColor':'#f3e5f5','fontSize':'16px'}}}%%
 flowchart LR
-    subgraph TAXO ["🔷 Domain Taxonomy & Semantics"]
-        A1["BGD: Common.EmailAddress (Meaning)"]
-        A2["Abstract FQDN: Common.EmailAddress (Behavior Pattern)"]
+    subgraph TAXONOMY ["🔷 Domain Taxonomy"]
+        A1["🧭 Common<br/>SchemaName.Email<br/>Abstract Fully Qualified Domain"]
     end
-
-    subgraph MAP ["🗃️ Metadata Repository Mapping"]
-        M1["FQDN→Engine Map (DataType, Length, Validation)"]
-        M2["FQTN Templates (Schema, Naming, Temporal, PK/FK)"]
-    end
-
-    subgraph TARGETS ["🧱 Database Targets (Horizontal Scaling & Reuse)"]
-        direction TB
-        B1["🐘 PostgreSQL: 'Common.EmailAddress' DOMAIN varchar(255) CHECK(regex)"]
-        B2["🔷 SQL Server: '[Common].[EmailAddress]' UDT NVARCHAR(255) + CHECK"]
-        B3["🔴 Oracle: 'Common.EmailAddress' VARCHAR2(255) + CHECK/TRIGGER"]
-        B4["🦆 DuckDB: 'Common.EmailAddress' VARCHAR + CHECK(REGEXP) (Emulated)"]
-    end
-
-    A1 --> A2
-    A2 --> M1
-    M1 --> B1
-    M1 --> B2
-    M1 --> B3
-    M1 --> B4
-
-    M2 --> B1
-    M2 --> B2
-    M2 --> B3
-    M2 --> B4
-
-    B1 -.-> M1
-    B2 -.-> M2
-    B3 -.-> M1
-    B4 -.-> M2
-
-    classDef taxonomyClass fill:#e3f2fd,stroke:#1976d2,stroke-width:3px,color:#0d47a1
-    classDef mapClass fill:#fff3e0,stroke:#f57c00,stroke-width:3px,color:#e65100
-    classDef targetClass fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px,color:#4a148c
     
-    class A1,A2 taxonomyClass
-    class M1,M2 mapClass
-    class B1,B2,B3,B4 targetClass
+    subgraph TARGETS ["🧱 Database Targets"]
+        B1["PostgreSQL<br/>SchemaName.Email<br/>varchar 255"]
+        B2["SQLServer<br/>SchemaName.Email<br/>NVARCHAR 255"]
+        B3["Oracle<br/>SchemaName.Email<br/>VARCHAR2 255"]
+        B4["DuckDB<br/>SchemaName.Email<br/>is implied but not supported<br/>varchar REGEXP MATCH"]
+    end
+    
+    A1-->B1
+    A1-->B2
+    A1-->B3
+    A1-->B4
+    
+    style TAXONOMY fill:#f0fffe,stroke:#00695c,stroke-width:3px,color:#000
+    style TARGETS fill:#e8f4fd,stroke:#1976d2,stroke-width:3px,color:#000
+    style A1 fill:#e0f2f1,stroke:#00695c,stroke-width:3px,color:#000
+    style B1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style B2 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style B3 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style B4 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    
+    linkStyle 0,1,2,3 stroke:#1976d2,stroke-width:3px
 
 ```
 
