@@ -1,0 +1,164 @@
+{
+  "IndustryRegistry": {
+    "Id": "50af1697b44a1de93e9369ba304ae2d51709c0796c03bf5615d5c4b7f76d87f0",
+    "Name": "Industry Master Registry",
+    "Version": "1.0",
+    "Type": "Catalog",
+    "Purpose": "Coordinates federated domain glossaries across the enterprise",
+    "Description": "Central catalog for discovering and coordinating domain-specific business glossaries",
+    "Architecture": "Federation Pattern with Bounded Contexts",
+    "CreatedDate": "2025-10-25T00:00:00Z",
+    "LastUpdated": "2025-10-25T12:00:00Z",
+    "Owner": "Enterprise Data Governance Office",
+    "ContactEmail": "data-governance@company.com",
+    "RegisteredGlossaries": [
+      {
+        "GlossaryId": "43c8bb873e9ddf8c13ba905fbe7a9ead627498025ec533ddc3c8ca22c6b03618",
+        "DomainNamespace": "Energy",
+        "Name": "Energy Sector Business Glossary",
+        "Version": "3.1",
+        "Status": "Active",
+        "Owner": "Energy Domain Team",
+        "ContactEmail": "energy-glossary@company.com",
+        "LastUpdated": "2025-10-25T00:00:00Z",
+        "ApiEndpoint": "https://api.company.com/glossaries/energy",
+        "ApiVersion": "v1",
+        "Statistics": {
+          "TotalBGDs": 4,
+          "TotalCategories": 7,
+          "TotalTerms": 303,
+          "LastTermAdded": "2025-07-13"
+        },
+        "Compliance": {
+          "Standards": [
+            "ISO 8000",
+            "DCAM Level 3"
+          ],
+          "LastAudit": "2025-10-01",
+          "NextAudit": "2026-01-01"
+        },
+        "CrossDomainLinks": {
+          "OutboundReferences": 15,
+          "InboundReferences": 8,
+          "LinkedDomains": [
+            "Manufacturing",
+            "Transportation"
+          ]
+        }
+      },
+      {
+        "GlossaryId": "d9a28b899a2ed972adf49ca32ab25e5be1337fb8d2f52146c64a39c941d92bfb",
+        "DomainNamespace": "Manufacturing",
+        "Name": "Manufacturing & Production Glossary",
+        "Version": "1.0",
+        "Status": "Development",
+        "Owner": "Manufacturing Domain Team",
+        "ContactEmail": "manufacturing-glossary@company.com",
+        "LastUpdated": "2025-11-01T00:00:00Z",
+        "ApiEndpoint": "https://api.company.com/glossaries/manufacturing",
+        "ApiVersion": "v1",
+        "Statistics": {
+          "TotalBGDs": 5,
+          "TotalCategories": 12,
+          "TotalTerms": 892,
+          "LastTermAdded": "2025-10-30"
+        },
+        "Compliance": {
+          "Standards": [
+            "ISO 8000",
+            "ISA-95"
+          ],
+          "LastAudit": "2025-10-15",
+          "NextAudit": "2026-01-15"
+        },
+        "CrossDomainLinks": {
+          "OutboundReferences": 8,
+          "InboundReferences": 15,
+          "LinkedDomains": [
+            "Energy",
+            "Supply Chain",
+            "Quality"
+          ]
+        }
+      },
+      {
+        "GlossaryId": "18ee1497cbd339a19f2321927465620d6842e6d9abf2e2248ec221c2c0a9c236",
+        "DomainNamespace": "Healthcare",
+        "Name": "Healthcare & Medical Glossary",
+        "Version": "1.0",
+        "Status": "Planning",
+        "Owner": "Healthcare Domain Team",
+        "ContactEmail": "healthcare-glossary@company.com",
+        "LastUpdated": "2025-11-05T00:00:00Z",
+        "ApiEndpoint": "https://api.company.com/glossaries/healthcare",
+        "ApiVersion": "v1",
+        "Statistics": {
+          "TotalBGDs": 6,
+          "TotalCategories": 18,
+          "TotalTerms": 1243,
+          "LastTermAdded": "2025-11-03"
+        },
+        "Compliance": {
+          "Standards": [
+            "HIPAA",
+            "HL7",
+            "SNOMED CT"
+          ],
+          "LastAudit": "2025-10-20",
+          "NextAudit": "2026-01-20"
+        },
+        "CrossDomainLinks": {
+          "OutboundReferences": 3,
+          "InboundReferences": 2,
+          "LinkedDomains": [
+            "Pharmaceuticals",
+            "Research"
+          ]
+        }
+      }
+    ],
+    "RegistryMetadata": {
+      "TotalGlossaries": 3,
+      "ActiveGlossaries": 1,
+      "DevelopmentGlossaries": 1,
+      "PlanningGlossaries": 1,
+      "TotalTermsAcrossAllGlossaries": 2438,
+      "TotalCrossDomainReferences": 51,
+      "LastSync": "2025-10-25T12:00:00Z",
+      "SyncFrequency": "Hourly"
+    },
+    "FederationRules": {
+      "CrossDomainReferenceFormat": "SHA-256",
+      "RequiredFields": [
+        "DomainNamespace",
+        "RegistryMembership"
+      ],
+      "VersioningStrategy": "Semantic (Major.Minor.Patch)",
+      "ConflictResolution": "Domain-Specific Ownership",
+      "DeprecationPolicy": "6-month notice period"
+    },
+    "ApiConfiguration": {
+      "BaseUrl": "https://api.company.com/registry",
+      "Version": "v1",
+      "Endpoints": {
+        "ListGlossaries": "/glossaries",
+        "GetGlossary": "/glossaries/{domainNamespace}",
+        "SearchTerms": "/search?q={query}&domain={namespace}",
+        "CrossDomainLookup": "/resolve/{termId}",
+        "HealthCheck": "/health"
+      },
+      "Authentication": "OAuth 2.0 + API Key",
+      "RateLimits": {
+        "RequestsPerMinute": 1000,
+        "BurstLimit": 100
+      }
+    },
+    "MonitoringAndMetrics": {
+      "Availability": "99.9%",
+      "AverageResponseTime": "45ms",
+      "CacheHitRate": "87%",
+      "LastDowntime": "2025-09-12 (2 minutes)",
+      "MonitoringDashboard": "https://monitoring.company.com/registry"
+    }
+  }
+}
