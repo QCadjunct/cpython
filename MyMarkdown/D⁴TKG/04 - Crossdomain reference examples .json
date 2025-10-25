@@ -1,0 +1,230 @@
+{
+  "CrossDomainReferenceExamples": {
+    "Description": "Examples of how terms from different domain glossaries reference each other using SHA-256 IDs",
+    "Pattern": "Federation with Horizontal References",
+    "Version": "1.0",
+    "CreatedDate": "2025-10-25",
+    "Examples": [
+      {
+        "ExampleId": 1,
+        "Title": "Energy Term Referencing Manufacturing Term",
+        "SourceDomain": "Energy",
+        "TargetDomain": "Manufacturing",
+        "UseCase": "Coal-based steel production relationship",
+        "SourceTerm": {
+          "Id": "281bb78028e9079a98ee6bbe037759a32acc5f9893a6337ff0f2f64f70911389",
+          "TermName": "Anthracite",
+          "DomainNamespace": "Energy",
+          "GlossaryId": "43c8bb873e9ddf8c13ba905fbe7a9ead627498025ec533ddc3c8ca22c6b03618",
+          "Definition": "Highest rank of coal with 92-98% carbon content, used in metallurgical processes",
+          "SchemaPath": "EnergyGlossary.FossilFuels.Coal.Anthracite",
+          "EnhancedRelatedTerms": [
+            {
+              "TermId": "a1b2c3d4e5f6",
+              "TermName": "SteelGradeA",
+              "OriginalName": "Steel Grade A",
+              "DomainNamespace": "Manufacturing",
+              "GlossaryId": "d9a28b899a2ed972adf49ca32ab25e5be1337fb8d2f52146c64a39c941d92bfb",
+              "IsCrossDomainReference": true,
+              "RelationshipType": "UsedIn",
+              "RelationshipDescription": "Anthracite coal is primary fuel source for Steel Grade A production",
+              "CrossDomainMetadata": {
+                "EstablishedDate": "2025-10-15",
+                "VerifiedBy": "Materials Engineering Team",
+                "BusinessJustification": "Critical for manufacturing cost modeling and supply chain planning",
+                "DataLineageImpact": "Changes to anthracite specifications affect steel production quality metrics"
+              }
+            },
+            {
+              "TermId": "b2c3d4e5f7",
+              "TermName": "BlastFurnaceOperation",
+              "OriginalName": "Blast Furnace Operation",
+              "DomainNamespace": "Manufacturing",
+              "GlossaryId": "d9a28b899a2ed972adf49ca32ab25e5be1337fb8d2f52146c64a39c941d92bfb",
+              "IsCrossDomainReference": true,
+              "RelationshipType": "ProcessInput",
+              "RelationshipDescription": "Anthracite is key input for blast furnace operations"
+            }
+          ]
+        }
+      },
+      {
+        "ExampleId": 2,
+        "Title": "Manufacturing Term Referencing Energy Term",
+        "SourceDomain": "Manufacturing",
+        "TargetDomain": "Energy",
+        "UseCase": "Energy consumption in manufacturing processes",
+        "SourceTerm": {
+          "Id": "a1b2c3d4e5f6",
+          "TermName": "SteelGradeA",
+          "DomainNamespace": "Manufacturing",
+          "GlossaryId": "d9a28b899a2ed972adf49ca32ab25e5be1337fb8d2f52146c64a39c941d92bfb",
+          "Definition": "High-carbon steel alloy produced using anthracite coal in blast furnace process",
+          "SchemaPath": "ManufacturingGlossary.Materials.Steel.SteelGradeA",
+          "EnhancedRelatedTerms": [
+            {
+              "TermId": "281bb78028e9079a98ee6bbe037759a32acc5f9893a6337ff0f2f64f70911389",
+              "TermName": "Anthracite",
+              "OriginalName": "Anthracite",
+              "DomainNamespace": "Energy",
+              "GlossaryId": "43c8bb873e9ddf8c13ba905fbe7a9ead627498025ec533ddc3c8ca22c6b03618",
+              "IsCrossDomainReference": true,
+              "RelationshipType": "RequiresInput",
+              "RelationshipDescription": "Steel Grade A production requires anthracite coal as primary fuel",
+              "CrossDomainMetadata": {
+                "EstablishedDate": "2025-10-15",
+                "VerifiedBy": "Manufacturing Operations Team",
+                "QuantitativeRelationship": "1 ton Steel Grade A requires 0.45 tons anthracite coal",
+                "CostImpact": "Anthracite prices directly affect Steel Grade A production costs"
+              }
+            },
+            {
+              "TermId": "357902d30ae0a21de642285f2f634f8101ab0fe2888a10ac6fbafe1783945109",
+              "TermName": "NaturalGas",
+              "OriginalName": "Natural Gas",
+              "DomainNamespace": "Energy",
+              "GlossaryId": "43c8bb873e9ddf8c13ba905fbe7a9ead627498025ec533ddc3c8ca22c6b03618",
+              "IsCrossDomainReference": true,
+              "RelationshipType": "AlternativeInput",
+              "RelationshipDescription": "Natural gas can be used as alternative energy source for steel production"
+            }
+          ]
+        }
+      },
+      {
+        "ExampleId": 3,
+        "Title": "Multi-Domain Reference Chain",
+        "SourceDomain": "Energy",
+        "TargetDomains": [
+          "Manufacturing",
+          "Transportation",
+          "Finance"
+        ],
+        "UseCase": "Complex supply chain with multiple domain touchpoints",
+        "SourceTerm": {
+          "Id": "73085301902439cb2759355335e7a51133029b6d59dae081e12aca1005456ace",
+          "TermName": "CrudeOil",
+          "DomainNamespace": "Energy",
+          "GlossaryId": "43c8bb873e9ddf8c13ba905fbe7a9ead627498025ec533ddc3c8ca22c6b03618",
+          "Definition": "Unrefined petroleum extracted from underground reservoirs",
+          "SchemaPath": "EnergyGlossary.FossilFuels.Petroleum.CrudeOil",
+          "EnhancedRelatedTerms": [
+            {
+              "TermId": "mfg_plastic_001",
+              "TermName": "PlasticResin",
+              "DomainNamespace": "Manufacturing",
+              "GlossaryId": "d9a28b899a2ed972adf49ca32ab25e5be1337fb8d2f52146c64a39c941d92bfb",
+              "IsCrossDomainReference": true,
+              "RelationshipType": "RawMaterialFor",
+              "RelationshipDescription": "Crude oil is refined into plastic resins for manufacturing"
+            },
+            {
+              "TermId": "trans_fuel_001",
+              "TermName": "DieselFuel",
+              "DomainNamespace": "Transportation",
+              "GlossaryId": "9b876c1f61d912bf0efdb8492ce88c3de170aea95a032f5b867a8167b50f4f84",
+              "IsCrossDomainReference": true,
+              "RelationshipType": "RefinedInto",
+              "RelationshipDescription": "Crude oil is refined into diesel fuel for transportation"
+            },
+            {
+              "TermId": "fin_commodity_001",
+              "TermName": "CrudeOilFutures",
+              "DomainNamespace": "Finance",
+              "GlossaryId": "5a12c1aa72cd031216f79546a09b314769f7f1b6975523a8da03c2cf57f602db",
+              "IsCrossDomainReference": true,
+              "RelationshipType": "TradedAs",
+              "RelationshipDescription": "Crude oil is traded as commodity futures in financial markets"
+            }
+          ]
+        }
+      },
+      {
+        "ExampleId": 4,
+        "Title": "Bidirectional Cross-Domain References",
+        "SourceDomain": "Energy",
+        "TargetDomain": "Healthcare",
+        "UseCase": "Medical equipment power requirements",
+        "TermPair": {
+          "EnergyTerm": {
+            "Id": "1f5c1f56b1f5e71f4c8270d7fdd6dfc77d816c3a1a4b636d3cf6507e04f5205a",
+            "TermName": "UninterruptiblePowerSupply",
+            "DomainNamespace": "Energy",
+            "GlossaryId": "43c8bb873e9ddf8c13ba905fbe7a9ead627498025ec533ddc3c8ca22c6b03618",
+            "CrossDomainReferences": [
+              {
+                "TermId": "health_device_001",
+                "TermName": "MRIScanner",
+                "DomainNamespace": "Healthcare",
+                "RelationshipType": "PowersEquipment",
+                "CriticalityLevel": "Mission Critical"
+              }
+            ]
+          },
+          "HealthcareTerm": {
+            "Id": "health_device_001",
+            "TermName": "MRIScanner",
+            "DomainNamespace": "Healthcare",
+            "GlossaryId": "18ee1497cbd339a19f2321927465620d6842e6d9abf2e2248ec221c2c0a9c236",
+            "CrossDomainReferences": [
+              {
+                "TermId": "1f5c1f56b1f5e71f4c8270d7fdd6dfc77d816c3a1a4b636d3cf6507e04f5205a",
+                "TermName": "UninterruptiblePowerSupply",
+                "DomainNamespace": "Energy",
+                "RelationshipType": "RequiresPower",
+                "PowerRequirements": "45-70 kW continuous, UPS backup required"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "QueryPatterns": {
+      "FindCrossDomainReferences": {
+        "Description": "Query to find all cross-domain references for a term",
+        "SQL": "SELECT * FROM Terms WHERE IsCrossDomainReference = true AND SourceTermId = ?",
+        "APIEndpoint": "/api/v1/terms/{termId}/cross-domain-refs"
+      },
+      "ResolveCrossDomainTerm": {
+        "Description": "Lookup term details from another domain using SHA-256 ID",
+        "Process": [
+          "1. Extract CrossDomainRefId from source term",
+          "2. Query registry to identify target domain",
+          "3. Direct lookup in target glossary using SHA-256 ID",
+          "4. Return term details with lineage"
+        ],
+        "APIEndpoint": "/api/v1/registry/resolve/{sha256Id}"
+      },
+      "TraverseDomainChain": {
+        "Description": "Follow chain of cross-domain references across multiple domains",
+        "Example": "Energy (Coal) \u2192 Manufacturing (Steel) \u2192 Construction (Buildings) \u2192 Real Estate (Property)",
+        "MaxDepth": 5,
+        "APIEndpoint": "/api/v1/registry/traverse?startTermId={id}&maxDepth={n}"
+      }
+    },
+    "ImplementationGuidelines": {
+      "BestPractices": [
+        "Always use SHA-256 IDs for cross-domain references",
+        "Include RelationshipType to describe the nature of the relationship",
+        "Add CrossDomainMetadata for business context and justification",
+        "Verify both sides of bidirectional relationships",
+        "Document quantitative relationships where applicable",
+        "Set up monitoring for cross-domain reference integrity"
+      ],
+      "PerformanceConsiderations": [
+        "Cache frequently accessed cross-domain terms",
+        "Use async lookups for non-critical cross-domain data",
+        "Implement circuit breakers for domain service calls",
+        "Monitor cross-domain query latency",
+        "Set timeout thresholds (recommended: 200ms)"
+      ],
+      "GovernanceRequirements": [
+        "Cross-domain references require approval from both domain owners",
+        "Document business justification for each cross-domain link",
+        "Review cross-domain references quarterly",
+        "Deprecate orphaned references (target term deleted)",
+        "Version control cross-domain relationship schemas"
+      ]
+    }
+  }
+}
